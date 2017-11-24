@@ -1,0 +1,62 @@
+<app-menu></app-menu>
+<h1>{{title}}</h1>
+<h3 *ngIf="categoriaUpdate; else create">
+  Actualizar Categoria por Id: {{categoriaUpdate}}
+</h3>
+
+<ng-template #create>
+  <h3>Crear nueva Categoria</h3>
+</ng-template>
+
+<div>
+  <form [formGroup]="categoriaForm" (ngSubmit)="onCategoriaFormSubmit()">
+    <table>
+      <tr><td>Ingrese el Nombre</td><td><input formControlName="nombre">
+          <label *ngIf="categoriaForm.get('nombre').invalid && processValidation" [ngClass]="'error'">El nombre es
+            requerido</label>
+        </td></tr>
+      <tr><td colspan="2">
+          <button *ngIf="!categoriaUpdate">CREATE</button>
+          <button *ngIf="categoriaUpdate">UPDATE</button>
+          <button (click)="backToCreateCategoria()" *ngIf="categoriaUpdate">Go Back</button>
+        </td></tr>
+    </table>
+  </form>
+  <br/>
+  <div *ngIf="statusCode; else processing">
+    <div *ngIf="statusCode === 201" [ngClass]="'success'">
+      Categoria added successfully.
+    </div>
+    <div *ngIf="statusCode === 409" [ngClass]="'success'">
+      Categoria already exists.
+    </div>
+    <div *ngIf="statusCode === 200" [ngClass]="'success'">
+      Categoria updated successfully.
+    </div>
+    <div *ngIf="statusCode === 204" [ngClass]="'success'">
+      Categoria deleted successfully.
+    </div>
+    <div *ngIf="statusCode === 500" [ngClass]="'error'">
+      Internal Server Error.
+    </div>
+  </div>
+  <ng-template #processing>
+    <img *ngIf="requesrProcessing" src="assets/images/loading.gif">
+  </ng-template>
+</div>
+
+<h3>{{title}}</h3>
+<table>
+  <tr><th>Id</th> <th>NOMBRE</th> <th></th> <th></th></tr>
+  <tr *ngFor="let categoria of categorias">
+    <td>{{categoria.id}}</td>
+    <td>{{categoria.nombre}}</td>
+    <td><button type="button" (click)="loadCategoriaToEdit(categoria.id)">Edit</button></td>
+    <td><button type="button" (click)="deleteCategoria(categoria.id)">Delete</button></td>
+  </tr>
+</table>
+
+<nav>
+  <a routerLink="/menu" routerLinkActive="active">Regresar</a>
+</nav>
+<router-outlet></router-outlet>

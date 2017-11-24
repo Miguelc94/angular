@@ -1,0 +1,15 @@
+<div align="center">
+  <h1>{{title}}</h1>
+
+  <div align="right">
+    <a href="#" (click)="logOut()">Cerrar Session</a>
+  </div>
+
+  <nav>
+    <a routerLink="/categoria" routerLinkActive="active">Categoria</a>
+    <a routerLink="/producto" routerLinkActive="active">Producto</a>
+    <a routerLink="/prestamos" routerLinkActive="">Prestamos</a>
+    <a routerLink="/reporte" routerLinkActive="active">Reporte</a>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

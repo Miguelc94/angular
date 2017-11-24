@@ -1,0 +1,132 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+h1 {
+  font-size: 2.5em;
+  color: #006600;
+  margin-bottom: 0;
+}
+
+h3 { 
+	color: rgb(18, 123, 56);
+}
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+    font-size:17px;
+}
+th {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}
+td {
+  font-family: Arial, Helvetica, sans-serif;
+  color: orangered;
+}
+input {
+    width: 225px;
+    margin: 8px 0;
+	background-color: #dfdfdf;
+	font-size:17px;
+}
+button {
+    background-color: rgb(184, 135, 70);
+	color: white;
+}
+.error{
+    color: red;
+    font-size: 20px;
+}
+.success{
+    color: green;
+    font-size: 20px;
+}
+/**
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+.categorias {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
+.categorias li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+}
+.categorias li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+.categorias li.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.categorias .text {
+  position: relative;
+  top: -3px;
+}
+.categorias .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+button {
+  font-family: Arial;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+}
+button:hover {
+  background-color: #cfd8dc;
+}
+button.delete {
+  float:right;
+  margin-top: 2px;
+  margin-right: .8em;
+  background-color: gray !important;
+  color:white;
+}
+
+
+nav a {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+nav a:visited, a:link {
+  color: #607D8B;
+}
+nav a:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+nav a.active {
+  color: #039be5;
+}
+*/

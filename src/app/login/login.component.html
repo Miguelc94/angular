@@ -1,0 +1,21 @@
+<div style="text-align: center" class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <br/><br/><br/><br/><br/><br/><br/>
+    <img src="../assets/logo.jpg" width="350">
+    <br/>
+    <div class="form-group">
+    <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Usuario" ngModel><br/><br/>
+    </div>
+    <div class="form-control">
+    <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Contraseña" ngModel><br/><br/>
+    </div>
+    <div class="form-control">
+    <button type="submit" class="btn btn-default">Login</button>
+    </div>
+
+  </form>
+</div>
+</div>
+</div>

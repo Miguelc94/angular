@@ -1,0 +1,28 @@
+<app-menu></app-menu>
+<h1>{{title}}</h1>
+
+<form #productoForm ngFor="productoForm">
+
+	<label>Producto</label> <input #productoNombre> <br /> <label>Catgeoria</label>
+	<select>
+		<option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
+	</select> <br />
+	<button type="submit">Add</button>
+</form>
+
+<table>
+  <tr><th>Id</th> <th>NOMBRE</th> <th>ESTADO</th> <th>CATEGORIA</th> <th></th> <th></th></tr>
+  <tr *ngFor="let producto of productos">
+    <td>{{producto.id}}</td>
+    <td>{{producto.nombre}}</td>
+    <td>{{producto.estado}}</td>
+    <td>{{producto.categoria}}</td>
+    <td><button type="button">Edit</button></td>
+    <td><button type="button">Delete</button></td>
+  </tr>
+</table>
+
+<nav>
+	<a routerLink="/menu" routerLinkActive="active">Regresar</a>
+</nav>
+<router-outlet></router-outlet>
