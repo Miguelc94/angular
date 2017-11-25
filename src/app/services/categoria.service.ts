@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http, Response, Headers, URLSearchParams, RequestOptions} from '@angular/http';
-import {Observable} from 'rxjs/Rx';
+import {Observable} from 'rxjs';
 
 import {Categoria} from '../models/categoria';
 import 'rxjs/add/operator/map';
@@ -9,13 +9,14 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class CategoriaService {
 
+  private urlAll = 'api/all-categorias';
   private url = 'api/categorias';
 
   constructor(private http: Http) {
   }
 
   getCategorias(): Observable<Categoria[]> {
-    return this.http.get(this.url)
+    return this.http.get(this.urlAll)
       .map(this.extractData)
       .catch(this.handleError);
   }
