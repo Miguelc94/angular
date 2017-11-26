@@ -11,7 +11,8 @@ import {Categoria} from '../models/categoria';
 
 export class CategoriaComponent implements OnInit {
 
-  title = 'Listado de Categorias';
+  title = 'Categorias';
+  subTitle = 'Listado de Categorias';
   categorias: Categoria[];
   statusCode: number;
   requesrProcessing = false;

@@ -1,4 +1,5 @@
 <app-menu></app-menu>
+<div align="center">
 <h1>{{title}}</h1>
 <h3 *ngIf="categoriaUpdate; else create">
   Actualizar Categoria por Id: {{categoriaUpdate}}
@@ -45,7 +46,7 @@
   </ng-template>
 </div>
 
-<h3>{{title}}</h3>
+<h3>{{subTitle}}</h3>
 <table>
   <tr><th>Id</th> <th>NOMBRE</th> <th></th> <th></th></tr>
   <tr *ngFor="let categoria of categorias">
@@ -60,3 +61,4 @@
   <a routerLink="/menu" routerLinkActive="active">Regresar</a>
 </nav>
 <router-outlet></router-outlet>
+</div>
