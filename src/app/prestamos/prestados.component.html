@@ -1,0 +1,16 @@
+<app-prestamos></app-prestamos>
+<div align="center">
+  <h1>{{title}}</h1>
+  <table>
+    <tr><th>ID</th> <th>NOMBRE</th> <th></th></tr>
+    <tr *ngFor="let prest of prestados">
+      <td>{{prest.id}}</td>
+      <td>{{prest.nombre}}</td>
+      <td><button type="submit" style="background-color: rgba(159,190,160,0.56)">Devolver</button></td>
+    </tr>
+  </table>
+  <nav>
+    <a routerLink="/prestamos" routerLinkActive="active" style="background-color: #eee;">Regresar</a>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

@@ -15,6 +15,18 @@ export class ProductoService {
   constructor(private http: Http) {
   }
 
+  productosDisponiles(): Observable<Producto[]> {
+    return this.http.get('/api/disp-productos')
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  productosPrestados(): Observable<Producto[]> {
+    return this.http.get('/api/pres-productos')
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   getProductos(): Observable<Producto[]> {
     return this.http.get(this.urlAll)
       .map(this.extractData)

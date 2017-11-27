@@ -1,28 +1,80 @@
 <app-menu></app-menu>
-<h1>{{title}}</h1>
+<div align="center">
+  <h1>{{title}}</h1>
+  <h3 *ngIf="productoUpdate; else create">
+    Actualizar Producto por Id: {{productoUpdate}}
+  </h3>
 
-<form #productoForm ngFor="productoForm">
+  <ng-template #create>
+    <h3>Crear nuevo Producto</h3>
+  </ng-template>
 
-	<label>Producto</label> <input #productoNombre> <br /> <label>Catgeoria</label>
-	<select>
-		<option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
-	</select> <br />
-	<button type="submit">Add</button>
-</form>
+  <div>
+    <form [formGroup]="productoForm" (ngSubmit)="onProductoFormSubmit()">
+      <table>
+        <tr>
+          <td>Ingrese el nombre</td><td><input formControlName="nombre">
+            <label *ngIf="productoForm.get('nombre').invalid && processValidation" [ngClass]="'error'">El nombre es requerido
+            </label>
+          </td></tr>
+        <tr><td>Seleccione la categoria</td>
+          <td><select formControlName="categoria">
+              <option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
+            </select>
+            <label *ngIf="productoForm.get('categoria').invalid && processValidation" [ngClass]="'error'"></label>
+          </td></tr>
+          <tr>
+          <td>Seleccione el estado</td>
+          <td><select formControlName="estado">
+          <option value="true">Disponible</option>
+          <option value="false">Prestado</option>
+          </select>
+          </td></tr>
+        <tr><td colspan="2">
+          <button *ngIf="!productoUpdate">Crear</button>
+          <button *ngIf="productoUpdate">Actualizar</button>
+          <button (click)="backToCreateProducto()" *ngIf="productoUpdate">Cancelar</button>
+        </td></tr>
+      </table>
+    </form>
+    <br/>
+    <div *ngIf="statusCode; else processing">
+      <div *ngIf="statusCode === 201" [ngClass]="'success'">
+        Producto creado.
+      </div>
+      <div *ngIf="statusCode === 409" [ngClass]="'success'">
+        Producto ya existe.
+      </div>
+      <div *ngIf="statusCode === 200" [ngClass]="'success'">
+        Producto actualizado.
+      </div>
+      <div *ngIf="statusCode === 204" [ngClass]="'success'">
+        Producto borrado.
+      </div>
+      <div *ngIf="statusCode === 500" [ngClass]="'error'">
+        Internal Server Error.
+      </div>
+      <ng-template #processing>
+        <img *ngIf="requesrProcessing" src="assets/images/loading.gif">
+      </ng-template>
+    </div>
 
-<table>
-  <tr><th>Id</th> <th>NOMBRE</th> <th>ESTADO</th> <th>CATEGORIA</th> <th></th> <th></th></tr>
-  <tr *ngFor="let producto of productos">
-    <td>{{producto.id}}</td>
-    <td>{{producto.nombre}}</td>
-    <td>{{producto.estado}}</td>
-    <td>{{producto.categoria}}</td>
-    <td><button type="button">Edit</button></td>
-    <td><button type="button">Delete</button></td>
-  </tr>
-</table>
+    <h3></h3>
+    <table>
+      <tr><th>ID</th> <th>NOMBRE</th> <th>ESTADO</th> <th></th> <th></th></tr>
+      <tr *ngFor="let producto of productos">
+        <td>{{producto.id}}</td>
+        <td>{{producto.nombre}}</td>
+        <td>{{producto.estado}}</td>
+        <td><button type="button" (click)="loadProductoToEdit(producto.id)">Editar</button></td>
+        <td><button type="button" (click)="deleteProducto(producto.id)">Borrar</button></td>
+      </tr>
+    </table>
 
-<nav>
-	<a routerLink="/menu" routerLinkActive="active">Regresar</a>
-</nav>
-<router-outlet></router-outlet>
+  </div>
+
+  <nav>
+    <a routerLink="/menu" routerLinkActive="active">Regresar</a>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

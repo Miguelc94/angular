@@ -17,25 +17,25 @@
             requerido</label>
         </td></tr>
       <tr><td colspan="2">
-          <button *ngIf="!categoriaUpdate">CREATE</button>
-          <button *ngIf="categoriaUpdate">UPDATE</button>
-          <button (click)="backToCreateCategoria()" *ngIf="categoriaUpdate">Go Back</button>
+          <button *ngIf="!categoriaUpdate">Crear</button>
+          <button *ngIf="categoriaUpdate">Actualizar</button>
+          <button (click)="backToCreateCategoria()" *ngIf="categoriaUpdate">Cancelar</button>
         </td></tr>
     </table>
   </form>
   <br/>
   <div *ngIf="statusCode; else processing">
     <div *ngIf="statusCode === 201" [ngClass]="'success'">
-      Categoria added successfully.
+      Categoria Creada.
     </div>
     <div *ngIf="statusCode === 409" [ngClass]="'success'">
-      Categoria already exists.
+      Categoria ya existe.
     </div>
     <div *ngIf="statusCode === 200" [ngClass]="'success'">
-      Categoria updated successfully.
+      Categoria actualizada.
     </div>
     <div *ngIf="statusCode === 204" [ngClass]="'success'">
-      Categoria deleted successfully.
+      Categoria borrada.
     </div>
     <div *ngIf="statusCode === 500" [ngClass]="'error'">
       Internal Server Error.
@@ -52,8 +52,8 @@
   <tr *ngFor="let categoria of categorias">
     <td>{{categoria.id}}</td>
     <td>{{categoria.nombre}}</td>
-    <td><button type="button" (click)="loadCategoriaToEdit(categoria.id)">Edit</button></td>
-    <td><button type="button" (click)="deleteCategoria(categoria.id)">Delete</button></td>
+    <td><button type="button" (click)="loadCategoriaToEdit(categoria.id)" style="background-color: green;">Edit</button></td>
+    <td><button type="button" (click)="deleteCategoria(categoria.id)" style="background-color: red;">Delete</button></td>
   </tr>
 </table>
 

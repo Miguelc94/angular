@@ -1,4 +1,13 @@
 <app-menu></app-menu>
-<p>
-  prestamos works!
-</p>
+<div align="center">
+  <nav>
+    <a routerLink="/disponible" routerLinkActive="true">Productos Disponibles</a>
+    <a routerLink="/prestado" routerLinkActive="true">Productos Prestados</a>
+  </nav>
+  <!--
+  <nav>
+    <a routerLink="/menu" routerLinkActive="active" style="background-color: #eee;">Regresar</a>
+  </nav>
+  -->
+</div>
+<router-outlet></router-outlet>

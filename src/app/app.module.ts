@@ -15,6 +15,8 @@ import {LoginGuard} from './login.guard';
 import {NoLoginGuard} from './no-login.guard';
 import { PrestamosComponent } from './prestamos/prestamos.component';
 import { ReporteComponent } from './reporte/reporte.component';
+import {DisponibleComponent} from './prestamos/disponible.component';
+import {PrestadosComponent} from './prestamos/prestados.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -23,7 +25,9 @@ const routes: Routes = [
   {path: 'categoria', component: CategoriaComponent, canActivate: [LoginGuard]},
   {path: 'producto', component: ProductoComponent, canActivate: [LoginGuard]},
   {path: 'prestamos', component: PrestamosComponent, canActivate: [LoginGuard]},
-  {path: 'reporte', component: ReporteComponent, canActivate: [LoginGuard]}
+  {path: 'reporte', component: ReporteComponent, canActivate: [LoginGuard]},
+  {path: 'disponible', component: DisponibleComponent, canActivate: [LoginGuard]},
+  {path: 'prestado', component: PrestadosComponent, canActivate: [LoginGuard]}
 ];
 
 @NgModule({
@@ -37,9 +41,11 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     CategoriaComponent,
+    DisponibleComponent,
     MenuComponent,
     ProductoComponent,
     LoginComponent,
+    PrestadosComponent,
     PrestamosComponent,
     ReporteComponent
   ],

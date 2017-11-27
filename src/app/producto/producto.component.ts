@@ -23,7 +23,8 @@ export class ProductoComponent implements OnInit {
   // create form
   productoForm = new FormGroup({
     nombre: new FormControl('', Validators.required),
-    categoria: new FormControl('', Validators.required)
+    categoria: new FormControl('', Validators.required),
+    estado: new FormControl('', Validators.required)
   });
 
   // create constructor to get service instance
@@ -47,6 +48,35 @@ export class ProductoComponent implements OnInit {
 
   // Handle create and update categoria
   onProductoFormSubmit() {
+    this.processValidation = true;
+    if (this.productoForm.invalid) {
+      return;
+    }
+    // La form es válida, ahora realiza crear o actualizar
+    this.preProcessConfigurations();
+    let nombre = this.productoForm.get('nombre').value.trim();
+    let categoria = this.productoForm.get('categoria').value.trim();
+    let estado = this.productoForm.get('estado').value.trim();
+    if (this.productoUpdate === null) {
+      // Manejar crear producto
+      let producto = new Producto(null, nombre, estado, categoria);
+      this.proService.createProducto(producto)
+        .subscribe(successCode => {
+          this.statusCode = successCode;
+          this.getProductos();
+          this.backToCreateProducto();
+        });
+    } else {
+      // Manejar la actualizacion del producto
+      let producto = new Producto(null, nombre, estado, categoria);
+      this.proService.updateProducto(producto)
+        .subscribe(succesCode => {
+          this.statusCode = succesCode;
+          this.getProductos();
+          this.backToCreateProducto();
+        },
+          errorCode => this.statusCode = errorCode);
+    }
   }
 
   // Cargar categoría por id para editar
@@ -55,7 +85,7 @@ export class ProductoComponent implements OnInit {
     this.proService.getProductoById(id)
       .subscribe(producto => {
         this.productoUpdate = producto.id;
-        this.productoForm.setValue({nombre: producto.nombre, categoria: producto.categoria});
+        this.productoForm.setValue({nombre: producto.nombre, categoria: producto.categoria, estado: producto.estado});
         this.processValidation = true;
         this.requesrProcessing = false;
       });
