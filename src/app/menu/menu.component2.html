@@ -1,0 +1,18 @@
+<div align="center">
+  <div align="right">
+    <a routerLink="#" href="#" (click)="logOut()">Cerrar Session</a>
+  </div>
+  <div align="left">
+    <img src="../assets/logo.jpg" width="150">
+  </div>
+
+  <h1>{{title}}</h1>
+
+  <nav>
+    <a routerLink="/categoria" routerLinkActive="active">Categoria</a>
+    <a routerLink="/producto" routerLinkActive="active">Producto</a>
+    <a routerLink="/prestamos" routerLinkActive="">Prestamos</a>
+    <a routerLink="/reporte" routerLinkActive="active">Reporte</a>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

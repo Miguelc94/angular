@@ -17,11 +17,13 @@ import { PrestamosComponent } from './prestamos/prestamos.component';
 import { ReporteComponent } from './reporte/reporte.component';
 import {DisponibleComponent} from './prestamos/disponible.component';
 import {PrestadosComponent} from './prestamos/prestados.component';
+import {MenuDosComponent} from './menu/menu.component2';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent, canActivate: [NoLoginGuard]},
   {path: 'menu', component: MenuComponent, canActivate: [LoginGuard]},
+  {path: 'menu2', component: MenuDosComponent, canActivate: [LoginGuard]},
   {path: 'categoria', component: CategoriaComponent, canActivate: [LoginGuard]},
   {path: 'producto', component: ProductoComponent, canActivate: [LoginGuard]},
   {path: 'prestamos', component: PrestamosComponent, canActivate: [LoginGuard]},
@@ -43,6 +45,7 @@ const routes: Routes = [
     CategoriaComponent,
     DisponibleComponent,
     MenuComponent,
+    MenuDosComponent,
     ProductoComponent,
     LoginComponent,
     PrestadosComponent,

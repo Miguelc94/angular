@@ -1,15 +1,20 @@
 <div align="center">
-  <h1>{{title}}</h1>
-
   <div align="right">
     <a routerLink="#" href="#" (click)="logOut()">Cerrar Session</a>
   </div>
+  <div align="left">
+    <img src="../assets/logo.jpg" width="150">
+  </div>
+
+  <h1>{{title}}</h1>
+  <br/>
+  <h2 style="color: #006600">Menu</h2>
 
   <nav>
-    <a routerLink="/categoria" routerLinkActive="active">Categoria</a>
-    <a routerLink="/producto" routerLinkActive="active">Producto</a>
-    <a routerLink="/prestamos" routerLinkActive="">Prestamos</a>
-    <a routerLink="/reporte" routerLinkActive="active">Reporte</a>
+    <a routerLink="/categoria" routerLinkActive="active">Categoria</a><br/>
+    <a routerLink="/producto" routerLinkActive="active">Producto</a><br/>
+    <a routerLink="/prestamos" routerLinkActive="">Prestamos</a><br/>
+    <a routerLink="/reporte" routerLinkActive="active">Reporte</a><br/>
   </nav>
   <router-outlet></router-outlet>
 </div>
