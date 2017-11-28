@@ -37,6 +37,22 @@ export class ReporteComponent implements OnInit {
         errorCode => this.statusCode = errorCode);
   }
 
+  onReporteFormSubmit() {
+    this.processValidation = true;
+    if (this.reporteForm.invalid) {
+      return;
+    }
+
+    this.preProcessConfiguration();
+    let idSolicitante = this.reporteUpdate.get('idSolicitante').value.trim();
+    let idProducto = this.reporteUpdate.get('idProducto').value.trim();
+    if (this.reporteUpdate === null) {
+
+    } else {
+      let reporte = new Reporte(this.reporteUpdate, idSolicitante, null, null, null);
+    }
+  }
+
   preProcessConfiguration() {
     this.statusCode = null;
     this.requestProcessing = true;
