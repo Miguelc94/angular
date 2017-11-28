@@ -1,7 +1,24 @@
 <app-menu2></app-menu2>
+<div align="center">
 
-<nav>
-  <a routerLink="disponible" routerLinkActive="true">Productos Disponibles</a>
-  <a routerLink="prestado" routerLinkActive="true">Productos Prestados</a>
-</nav>
-<router-outlet></router-outlet>
+  <h1>{{title}}</h1>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>SOLICITANTE</th>
+      <th>PRODUCTO</th>
+      <th>FECHA PRESTAMO</th>
+      <th>FECHA DEVOLUCION</th>
+    </tr>
+    <tr *ngFor="let reporte of reportes">
+      <td>{{reporte.id}}</td>
+      <td>{{reporte.idSolicitante}}</td>
+      <td>{{reporte.nomProducto}}</td>
+      <td>{{reporte.fechaPrestamo}}</td>
+      <td>{{reporte.fechaDevolucion}}</td>
+    </tr>
+  </table>
+
+  <router-outlet></router-outlet>
+</div>

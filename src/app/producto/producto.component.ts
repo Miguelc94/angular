@@ -68,7 +68,7 @@ export class ProductoComponent implements OnInit {
         });
     } else {
       // Manejar la actualizacion del producto
-      let producto = new Producto(null, nombre, estado, categoria);
+      let producto = new Producto(this.productoUpdate, nombre, estado, categoria);
       this.proService.updateProducto(producto)
         .subscribe(succesCode => {
           this.statusCode = succesCode;

@@ -18,6 +18,7 @@ import { ReporteComponent } from './reporte/reporte.component';
 import {DisponibleComponent} from './prestamos/disponible.component';
 import {PrestadosComponent} from './prestamos/prestados.component';
 import {MenuDosComponent} from './menu/menu.component2';
+import {ReporteService} from './services/reporte.service';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -52,7 +53,7 @@ const routes: Routes = [
     PrestamosComponent,
     ReporteComponent
   ],
-  providers: [CategoriaService, ProductoService, LoginGuard, NoLoginGuard],
+  providers: [CategoriaService, ProductoService, ReporteService, LoginGuard, NoLoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
